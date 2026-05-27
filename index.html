@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLRLZ. — Creative Direction & Art Direction</title>
+<meta name="description" content="ATLRLZ. is an independent creative studio based in Tegucigalpa, Honduras. Creative direction, art direction, and visual strategy — working globally.">
+<style>
+:root {
+  --blue: #1C1CF0;
+  --blue-mid: #5757F5;
+  --indigo: #2D2A8C;
+  --lavender: #E8E8FF;
+  --white: #FFFFFF;
+  --black: #0A0A0A;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  font-weight: 700;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ——— LOADER ——— */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loader-logo {
+  height: 80px;
+  width: auto;
+  max-width: 480px;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* ——— NAV ——— */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px;
+  transition: background 0.4s ease, padding 0.3s ease;
+}
+#nav.scrolled {
+  background: var(--black);
+  padding: 16px 40px;
+}
+.nav-logo { text-decoration: none; display: block; }
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--blue); }
+#nav.light-nav .nav-links a { color: var(--black); }
+#nav.light-nav .nav-links a:hover { color: var(--blue); }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#nav.light-nav .hamburger span { background: var(--black); }
+
+/* ——— MOBILE MENU ——— */
+#mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+#mobile-menu.open { opacity: 1; pointer-events: all; }
+#mobile-menu a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: clamp(40px, 8vw, 64px);
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+#mobile-menu a:hover { color: var(--blue); }
+
+/* ——— HERO ——— */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 100px 40px 72px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.62);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  width: 100%;
+}
+.hero-headline {
+  font-size: clamp(32px, 4vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+.hero-headline .hero-line { display: block; }
+.hero-headline .char { display: inline-block; }
+.hero-subhead {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.65;
+  margin-bottom: 20px;
+}
+.hero-body {
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--white);
+  opacity: 0.8;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+.hero-cta {
+  display: inline-block;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--white);
+  padding: 14px 32px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.hero-cta:hover { background: var(--white); color: var(--black); }
+
+/* ——— SECTION COMMON ——— */
+.section-label {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 40px;
+  display: block;
+}
+.section-headline {
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+/* ——— ABOUT ——— */
+#about {
+  background: var(--white);
+  color: var(--black);
+  padding: 120px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+#about .section-label { color: var(--black); }
+.about-body {
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.75;
+  color: var(--black);
+}
+.about-body p + p { margin-top: 24px; }
+
+/* ——— DISCIPLINES ——— */
+#disciplines {
+  background: var(--black);
+  color: var(--white);
+  padding: 120px 40px;
+}
+.disciplines-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 56px;
+}
+.chip {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.28);
+  padding: 16px 28px;
+  font-size: clamp(14px, 1.4vw, 19px);
+  border-radius: 100px;
+  color: var(--white);
+  transition: border-color 0.3s ease;
+  cursor: default;
+}
+.chip:hover { border-color: rgba(255,255,255,0.7); }
+.chip.highlight {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+.chip.highlight:hover { border-color: var(--blue-mid); background: var(--blue-mid); }
+
+/* ——— WORK ——— */
+#work {
+  background: var(--black);
+  padding: 120px 40px;
+}
+.work-grid {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.work-row { display: grid; gap: 4px; }
+.work-row-full { grid-template-columns: 1fr; }
+.work-row-60-40 { grid-template-columns: 3fr 2fr; }
+.work-row-40-60 { grid-template-columns: 2fr 3fr; }
+.work-row-33-67 { grid-template-columns: 1fr 2fr; }
+.work-row-half { grid-template-columns: 1fr 1fr; }
+
+/* ——— MARQUEE ——— */
+#marquee {
+  background: var(--black);
+  overflow: hidden;
+  padding: 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.marquee-track { display: flex; overflow: hidden; }
+.marquee-inner {
+  display: flex;
+  gap: 4px;
+  animation: marqueeScroll 55s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover .marquee-inner { animation-play-state: paused; }
+.marquee-item {
+  flex: 0 0 auto;
+  width: 380px;
+  height: 280px;
+  overflow: hidden;
+}
+.marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.marquee-item:hover img { transform: scale(1.05); }
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+  .marquee-item { width: 260px; height: 200px; }
+}
+
+/* ——— PROJECT CARDS ——— */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+}
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  padding-bottom: 66.67%;
+  overflow: hidden;
+}
+.work-row-full .project-card-inner { padding-bottom: 52%; }
+.project-card-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+}
+.project-card:hover .project-card-media { transform: scale(1.05); }
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.3) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px;
+}
+.project-card:hover .project-card-overlay { opacity: 1; }
+.project-card-num {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+.project-card-title {
+  font-size: clamp(22px, 2.5vw, 36px);
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.project-card-category {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.project-card-arrow {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-size: 22px;
+  color: var(--white);
+  opacity: 0;
+  transform: translate(-8px, 8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.project-card:hover .project-card-arrow { opacity: 1; transform: translate(0,0); }
+
+/* ——— PROJECT MODALS ——— */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 2000;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.project-modal.open { opacity: 1; pointer-events: all; }
+.modal-close {
+  position: fixed;
+  top: 28px;
+  right: 40px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font);
+  letter-spacing: 0.1em;
+  padding: 10px 18px;
+  cursor: pointer;
+  z-index: 2001;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.modal-close:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.modal-inner {
+  padding: 120px 40px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.modal-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 24px;
+}
+.modal-headline {
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.modal-description {
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.75;
+  max-width: 680px;
+  opacity: 0.82;
+  margin-bottom: 40px;
+}
+.modal-disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 72px;
+}
+.modal-disciplines span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 16px;
+  border-radius: 100px;
+}
+.modal-video { width: 100%; margin-bottom: 4px; }
+.modal-video video { width: 100%; height: auto; display: block; max-height: 80vh; object-fit: cover; }
+.modal-gallery { display: grid; gap: 4px; }
+.modal-gallery-2col { grid-template-columns: 1fr 1fr; }
+.modal-gallery-3col { grid-template-columns: 1fr 1fr 1fr; }
+.modal-gallery img { width: 100%; height: auto; display: block; object-fit: cover; }
+.modal-gallery-full img { width: 100%; height: auto; display: block; }
+.modal-gallery-solo { margin-top: 4px; }
+.modal-gallery-solo img { width: 100%; height: auto; display: block; }
+
+/* ——— MOTION ——— */
+#motion {
+  background: var(--black);
+  padding: 140px 0 0;
+}
+.motion-header {
+  padding: 0 40px;
+  margin-bottom: 72px;
+}
+.motion-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.motion-item {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.motion-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.motion-item:hover video { transform: scale(1.03); }
+.motion-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 50%, transparent 72%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+  pointer-events: none;
+}
+.motion-item:hover .motion-overlay { opacity: 1; }
+.motion-item-title {
+  font-size: clamp(22px, 2.8vw, 42px);
+  color: var(--white);
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.motion-item-cat {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.55;
+  margin-top: 8px;
+}
+/* Aspect ratios matched to source files */
+.motion-ar-cinema { aspect-ratio: 2866 / 2160; } /* CINEMATIC WESTERN ~4:3 wide */
+.motion-ar-wide   { aspect-ratio: 16 / 9; }       /* PERFUME ANUNCIO widescreen */
+/* Side-by-side duo */
+.motion-duo {
+  display: grid;
+  grid-template-columns: 1.778fr 0.749fr; /* 16:9 landscape + 3:4 portrait at matching height */
+  gap: 4px;
+}
+.motion-ar-169 { aspect-ratio: 16 / 9; }  /* KRIVE */
+.motion-ar-34  { aspect-ratio: 3 / 4; }   /* PLANETA SKIN */
+@media (max-width: 768px) {
+  #motion { padding: 80px 0 0; }
+  .motion-header { padding: 0 24px; margin-bottom: 48px; }
+  .motion-duo { grid-template-columns: 1fr; }
+  .motion-overlay { padding: 24px; }
+}
+
+/* ——— SERVICES ——— */
+#services {
+  background: var(--black);
+  padding: 140px 0 120px;
+}
+.services-header {
+  padding: 0 40px;
+  margin-bottom: 80px;
+}
+.services-list { width: 100%; }
+.service-item {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 28px;
+  row-gap: 18px;
+  padding: 44px 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.35s ease;
+  position: relative;
+}
+.service-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+.service-item:hover { background: rgba(255,255,255,0.035); }
+.service-item.s-highlight {
+  background: var(--blue);
+  border-top-color: transparent;
+  border-bottom: none;
+}
+.service-item.s-highlight + .service-item { border-top-color: transparent; }
+.service-item.s-highlight:hover { background: var(--blue-mid); }
+.service-num {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  padding-top: 12px;
+  align-self: start;
+}
+.service-name {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: clamp(30px, 3.8vw, 56px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--white);
+  align-self: center;
+}
+.service-price-block {
+  grid-column: 3;
+  grid-row: 1;
+  text-align: right;
+  align-self: center;
+}
+.service-price {
+  display: block;
+  font-size: clamp(26px, 3.2vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--white);
+  white-space: nowrap;
+}
+.service-per {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-top: 4px;
+  display: block;
+}
+.service-desc {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: clamp(13px, 1.1vw, 16px);
+  line-height: 1.7;
+  color: var(--white);
+  opacity: 0.55;
+  max-width: 620px;
+}
+.service-delivery {
+  grid-column: 3;
+  grid-row: 2;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  text-align: right;
+  align-self: start;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.service-item.s-highlight .service-desc { opacity: 0.8; }
+.service-item.s-highlight .service-num,
+.service-item.s-highlight .service-delivery,
+.service-item.s-highlight .service-per { opacity: 0.65; }
+@media (max-width: 768px) {
+  #services { padding: 80px 0 80px; }
+  .services-header { padding: 0 24px; margin-bottom: 56px; }
+  .service-item {
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto auto auto auto;
+    column-gap: 16px;
+    row-gap: 12px;
+    padding: 32px 24px;
+  }
+  .service-num { grid-row: 1; }
+  .service-name { grid-column: 2; grid-row: 1; font-size: clamp(26px, 7vw, 40px); }
+  .service-price-block { grid-column: 2; grid-row: 2; text-align: left; }
+  .service-desc { grid-column: 2; grid-row: 3; }
+  .service-delivery { grid-column: 2; grid-row: 4; text-align: left; }
+}
+
+/* ——— CONTACT ——— */
+#contact {
+  background: var(--blue);
+  color: var(--white);
+  padding: 140px 40px;
+}
+#contact .section-label { color: var(--white); opacity: 0.55; }
+.contact-logo { height: 48px; width: auto; display: block; margin-bottom: 56px; }
+.contact-headline {
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.contact-body {
+  font-size: clamp(14px, 1.2vw, 18px);
+  opacity: 0.75;
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 64px;
+}
+.contact-email {
+  display: block;
+  font-size: clamp(22px, 3.5vw, 52px);
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  transition: opacity 0.3s ease;
+  line-height: 1;
+}
+.contact-email:hover { text-decoration: underline; opacity: 0.8; }
+.contact-instagram {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.contact-instagram:hover { opacity: 1; }
+
+/* ——— FOOTER ——— */
+footer {
+  background: var(--black);
+  padding: 48px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo { height: 28px; width: auto; }
+.footer-text {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.6;
+}
+.footer-right {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ——— RESPONSIVE ——— */
+@media (max-width: 768px) {
+  #nav { padding: 20px 24px; }
+  #nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  #hero { align-items: flex-start; padding: 96px 24px 48px; }
+  .hero-headline { font-size: clamp(26px, 7vw, 40px); }
+  #about { grid-template-columns: 1fr; gap: 36px; padding: 80px 24px; }
+  #disciplines { padding: 80px 24px; }
+  .chip { font-size: 14px; padding: 12px 20px; }
+  #work { padding: 80px 24px; }
+  .work-row-60-40,
+  .work-row-40-60,
+  .work-row-33-67,
+  .work-row-half { grid-template-columns: 1fr; }
+  .work-row-full .project-card-inner { padding-bottom: 70%; }
+  .modal-inner { padding: 80px 24px 72px; }
+  .modal-gallery-2col,
+  .modal-gallery-3col { grid-template-columns: 1fr; }
+  .modal-close { right: 24px; top: 22px; }
+  #contact { padding: 80px 24px; }
+  footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+  .footer-right { text-align: center; }
+}
+@media (min-width: 769px) and (max-width: 1199px) {
+  .modal-gallery-3col { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1200px) {
+  #hero { padding: 100px 80px; }
+  #about { padding: 160px 80px; gap: 120px; }
+  #disciplines { padding: 160px 80px; }
+  #work { padding: 160px 80px; }
+  #contact { padding: 160px 80px; }
+  footer { padding: 56px 80px; }
+  .modal-inner { padding: 140px 80px 100px; }
+  .modal-close { right: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="logos/logo-white.png" alt="ATLRLZ." id="loader-logo">
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" id="nav-logo-link">
+    <img src="logos/logo-white.png" alt="ATLRLZ." id="nav-logo-img">
+  </a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <a href="#work" class="mobile-link">Work</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" style="background-image: url('Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_60c4457d-9512-4689-ae04-98ba4d25b20a_3.png')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content" id="hero-content">
+    <h1 class="hero-headline" id="hero-headline">
+      <span class="hero-line">Creative direction.</span>
+      <span class="hero-line">Built to perform.</span>
+    </h1>
+    <p class="hero-subhead" id="hero-subhead">Art Direction · Visual Strategy · Generative Production</p>
+    <p class="hero-body" id="hero-body">We build visual worlds for brands that demand precision.<br>Tegucigalpa — working globally.</p>
+    <a href="#work" class="hero-cta" id="hero-cta">View Work →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <span class="section-label">01 — About</span>
+    <h2 class="section-headline">Architectural thinking.<br>Cinematic execution.</h2>
+  </div>
+  <div class="about-right">
+    <div class="about-body">
+      <p>ATLRLZ. is an independent creative studio founded by Leonardo Flores. Five years of obsession with how visuals make businesses compete at a higher level — built on a foundation of architectural thinking, artistic sensibility, and a generative production pipeline that most studios are still trying to figure out.</p>
+      <p>We work with brands that know their product deserves better visuals. We deliver creative direction, campaign production, character design, and motion work that competes with anything produced anywhere in the world.</p>
+      <p>Independent. Precise. Global.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISCIPLINES -->
+<section id="disciplines">
+  <span class="section-label">02 — Disciplines</span>
+  <h2 class="section-headline">Every frame.<br>On purpose.</h2>
+  <div class="disciplines-chips">
+    <span class="chip">Art Direction &amp; Branding</span>
+    <span class="chip">Graphic &amp; Editorial Design</span>
+    <span class="chip">Packaging Design</span>
+    <span class="chip">Commercial Photography</span>
+    <span class="chip">Cinematic Video Production</span>
+    <span class="chip">Photorealistic 3D Renders</span>
+    <span class="chip">Creative Conceptualization</span>
+    <span class="chip">Visual Brand Strategy</span>
+    <span class="chip highlight">Generative AI Production</span>
+  </div>
+</section>
+
+<!-- MARQUEE BANNER -->
+<section id="marquee">
+  <div class="marquee-track">
+    <div class="marquee-inner">
+      <div class="marquee-item"><img src="Para mi portfolio/ROJIITO/ROJIITO 1.jpg" alt="ROJIITO" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/MIXIES/MIXIES TIGER.png" alt="MIXIES" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/RUNYIA/15.jpg" alt="RUNYIA" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_60c4457d-9512-4689-ae04-98ba4d25b20a_3.png" alt="Fashion" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/LOEWE/LOEWE 2.png" alt="LOEWE" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/KRIVE Y RESTAURANTES/RESTAURANT 2.png" alt="KRIVE" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/PERFUMES Y SKINCARE/LIES 1.png" alt="LIES" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_premium_sports_campaign_photograph_of__706139f6-e9ba-47cb-aa1c-60ea08f86de0_2.png" alt="Sports" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/TECH INDUSTRY/TECH INDUSTRY 2.png" alt="Tech" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/RUNYIA/18.jpg" alt="RUNYIA" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/MIXIES/MIXIES BEAR.png" alt="MIXIES" loading="lazy"></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="marquee-item"><img src="Para mi portfolio/ROJIITO/ROJIITO 1.jpg" alt="ROJIITO" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/MIXIES/MIXIES TIGER.png" alt="MIXIES" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/RUNYIA/15.jpg" alt="RUNYIA" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_60c4457d-9512-4689-ae04-98ba4d25b20a_3.png" alt="Fashion" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/LOEWE/LOEWE 2.png" alt="LOEWE" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/KRIVE Y RESTAURANTES/RESTAURANT 2.png" alt="KRIVE" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/PERFUMES Y SKINCARE/LIES 1.png" alt="LIES" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_premium_sports_campaign_photograph_of__706139f6-e9ba-47cb-aa1c-60ea08f86de0_2.png" alt="Sports" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/TECH INDUSTRY/TECH INDUSTRY 2.png" alt="Tech" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/RUNYIA/18.jpg" alt="RUNYIA" loading="lazy"></div>
+      <div class="marquee-item"><img src="Para mi portfolio/MIXIES/MIXIES BEAR.png" alt="MIXIES" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section id="motion">
+  <div class="motion-header">
+    <span class="section-label">— Motion</span>
+    <h2 class="section-headline">Moving images.<br>Moving brands.</h2>
+  </div>
+
+  <div class="motion-grid">
+
+    <!-- CINEMATIC WESTERN — wide cinema format (2866×2160) -->
+    <div class="motion-item motion-ar-cinema">
+      <video autoplay muted loop playsinline>
+        <source src="Para mi portfolio/CINEMATIC SHOTS/CINEMATIC WESTERN.mp4" type="video/mp4">
+      </video>
+      <div class="motion-overlay">
+        <span class="motion-item-title">Cinematic Western</span>
+        <span class="motion-item-cat">Cinematic Direction · 2025</span>
+      </div>
+    </div>
+
+    <!-- KRIVE (16:9 landscape) + PLANETA SKIN (portrait 3:4) — side by side at matching height -->
+    <div class="motion-duo">
+      <div class="motion-item motion-ar-169">
+        <video autoplay muted loop playsinline>
+          <source src="Para mi portfolio/KRIVE Y RESTAURANTES/krive.mp4" type="video/mp4">
+        </video>
+        <div class="motion-overlay">
+          <span class="motion-item-title">Krive</span>
+          <span class="motion-item-cat">Brand Motion · 2025</span>
+        </div>
+      </div>
+      <div class="motion-item motion-ar-34">
+        <video autoplay muted loop playsinline>
+          <source src="Para mi portfolio/PERFUMES Y SKINCARE/Planeta Skin Draft.mp4" type="video/mp4">
+        </video>
+        <div class="motion-overlay">
+          <span class="motion-item-title">Planeta Skin</span>
+          <span class="motion-item-cat">Brand Motion · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERFUME ANUNCIO — widescreen (3868×2160) -->
+    <div class="motion-item motion-ar-wide">
+      <video autoplay muted loop playsinline>
+        <source src="Para mi portfolio/PERFUMES Y SKINCARE/PERFUME ANUNCIO.mp4" type="video/mp4">
+      </video>
+      <div class="motion-overlay">
+        <span class="motion-item-title">Tom Ford Perfume</span>
+        <span class="motion-item-cat">Commercial Motion · 2025</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <span class="section-label">03 — Selected Work</span>
+  <h2 class="section-headline">Work that moves.<br>People and products.</h2>
+
+  <div class="work-grid">
+
+    <!-- 01 ROJIITO — full width -->
+    <div class="work-row work-row-full">
+      <div class="project-card" onclick="openProject('01')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/ROJIITO/ROJIITO 1.jpg" alt="ROJIITO" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">01</span>
+            <h3 class="project-card-title">ROJIITO</h3>
+            <span class="project-card-category">Brand Identity &amp; Visual Campaign · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 MIXIES + 03 RUNYIA -->
+    <div class="work-row work-row-60-40">
+      <div class="project-card" onclick="openProject('02')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/MIXIES/MIXIES TIGER.png" alt="MIXIES" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">02</span>
+            <h3 class="project-card-title">MIXIES</h3>
+            <span class="project-card-category">Character Design &amp; Illustration · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+      <div class="project-card" onclick="openProject('03')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/RUNYIA/15.jpg" alt="RUNYIA" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">03</span>
+            <h3 class="project-card-title">RUNYIA</h3>
+            <span class="project-card-category">Art Direction &amp; Campaign · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 FASHION EDITORIAL — full width -->
+    <div class="work-row work-row-full">
+      <div class="project-card" onclick="openProject('04')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_60c4457d-9512-4689-ae04-98ba4d25b20a_3.png" alt="Fashion Editorial" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">04</span>
+            <h3 class="project-card-title">Fashion Editorial</h3>
+            <span class="project-card-category">Fashion Art Direction · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 LOEWE + 06 PLANETA SKIN -->
+    <div class="work-row work-row-40-60">
+      <div class="project-card" onclick="openProject('05')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/LOEWE/LOEWE 2.png" alt="LOEWE" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">05</span>
+            <h3 class="project-card-title">LOEWE</h3>
+            <span class="project-card-category">Luxury Art Direction · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+      <div class="project-card" onclick="openProject('06')">
+        <div class="project-card-inner">
+          <video class="project-card-media" autoplay muted loop playsinline>
+            <source src="Para mi portfolio/PERFUMES Y SKINCARE/Planeta Skin Draft.mp4">
+          </video>
+          <div class="project-card-overlay">
+            <span class="project-card-num">06</span>
+            <h3 class="project-card-title">Planeta Skin</h3>
+            <span class="project-card-category">Beauty / Brand Motion · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 KRIVE — full width -->
+    <div class="work-row work-row-full">
+      <div class="project-card" onclick="openProject('07')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/KRIVE Y RESTAURANTES/RESTAURANT 2.png" alt="KRIVE" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">07</span>
+            <h3 class="project-card-title">KRIVE</h3>
+            <span class="project-card-category">Motion Direction &amp; F&amp;B · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 LIES + 09 SPORTS -->
+    <div class="work-row work-row-33-67">
+      <div class="project-card" onclick="openProject('08')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/PERFUMES Y SKINCARE/LIES 1.png" alt="LIES" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">08</span>
+            <h3 class="project-card-title">LIES</h3>
+            <span class="project-card-category">Beauty / Brand Identity · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+      <div class="project-card" onclick="openProject('09')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_premium_sports_campaign_photograph_of__706139f6-e9ba-47cb-aa1c-60ea08f86de0_2.png" alt="Sports Campaign" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">09</span>
+            <h3 class="project-card-title">Sports Campaign</h3>
+            <span class="project-card-category">Sport / Campaign · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 TECH INDUSTRY — full width -->
+    <div class="work-row work-row-full">
+      <div class="project-card" onclick="openProject('10')">
+        <div class="project-card-inner">
+          <img class="project-card-media" src="Para mi portfolio/TECH INDUSTRY/TECH INDUSTRY 2.png" alt="Tech Industry" loading="lazy">
+          <div class="project-card-overlay">
+            <span class="project-card-num">10</span>
+            <h3 class="project-card-title">Tech Industry</h3>
+            <span class="project-card-category">Tech / Product Campaign · 2025</span>
+          </div>
+          <span class="project-card-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /work-grid -->
+</section>
+
+<!-- ========== PROJECT MODALS ========== -->
+
+<!-- 01 ROJIITO -->
+<div class="project-modal" id="modal-01">
+  <button class="modal-close" onclick="closeProject('01')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">01 — Brand Identity &amp; Visual Campaign | Spec Work · 2025</span>
+    <h2 class="modal-headline">Pleasure, Designed.</h2>
+    <p class="modal-description">Full brand identity and campaign direction for Rojiito — an ice cream concept built around sensory provocation. The visual language lives in the tension between something delicious and something dangerous. Oversaturated reds, editorial close-ups, and a logo system that works in white, neon, and outline across every surface.</p>
+    <div class="modal-disciplines">
+      <span>Brand Identity</span><span>Art Direction</span><span>Campaign</span><span>Visual Strategy</span>
+    </div>
+    <div class="modal-gallery modal-gallery-2col">
+      <img src="Para mi portfolio/ROJIITO/ROJIITO 1.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/ROJIITO/ROJIITO 2.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/ROJIITO/ROJIITO 3.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/ROJIITO/ROJIITO 4.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/ROJIITO/ROJIITO 5.jpg" alt="" loading="lazy" style="grid-column: 1 / -1;">
+    </div>
+  </div>
+</div>
+
+<!-- 02 MIXIES -->
+<div class="project-modal" id="modal-02">
+  <button class="modal-close" onclick="closeProject('02')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">02 — Character Design &amp; Illustration | TV / Broadcast · 2025</span>
+    <h2 class="modal-headline">A cast of their own.</h2>
+    <p class="modal-description">Character design system for a children's television production. Seven original characters — each with a distinct sport, personality, and color world — built in a retro-cartoon illustration style that references golden-age animation with a contemporary graphic edge. Every character was designed to live in motion.</p>
+    <div class="modal-disciplines">
+      <span>Character Design</span><span>Illustration</span><span>Brand System</span><span>Motion-Ready Assets</span>
+    </div>
+    <div class="modal-gallery modal-gallery-3col">
+      <img src="Para mi portfolio/MIXIES/MIXIES BEAR.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/MIXIES/MIXIES DOG.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/MIXIES/MIXIES LION.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/MIXIES/MIXIES PUMA.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/MIXIES/MIXIES TIGER.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/MIXIES/MIXIES TURTLE.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/MIXIES/7.png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 03 RUNYIA -->
+<div class="project-modal" id="modal-03">
+  <button class="modal-close" onclick="closeProject('03')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">03 — Art Direction &amp; Campaign | Spec Work · 2025</span>
+    <h2 class="modal-headline">Every terrain.<br>Is a finish line.</h2>
+    <p class="modal-description">Campaign direction for Runyia — a running club brand positioned for serious athletes. The visual strategy moves between the granular and the epic: a shoe on asphalt at golden hour, marathon packs shot from above, a lone runner cutting through open dunes. Motion blur as storytelling. The wordmark, stripped and crossed, carries the tension of speed.</p>
+    <div class="modal-disciplines">
+      <span>Art Direction</span><span>Campaign Strategy</span><span>Visual Narrative</span><span>Photography Direction</span>
+    </div>
+    <div class="modal-gallery modal-gallery-2col">
+      <img src="Para mi portfolio/RUNYIA/15.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/16.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/17.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/18.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/19.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/20.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/21.jpg" alt="" loading="lazy">
+      <img src="Para mi portfolio/RUNYIA/22.jpg" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 04 FASHION EDITORIAL -->
+<div class="project-modal" id="modal-04">
+  <button class="modal-close" onclick="closeProject('04')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">04 — Fashion Art Direction | Spec Work · 2025</span>
+    <h2 class="modal-headline">Wear it like<br>architecture.</h2>
+    <p class="modal-description">A conceptual fashion campaign built around garments as structural objects. Every frame is composed as a confrontation between body, volume, and environment — extreme silhouettes against gradient skies, slow shutter motion capturing deliberate movement, a figure owning every inch of space. No styling is decorative. Everything is intentional weight.</p>
+    <div class="modal-disciplines">
+      <span>Fashion Art Direction</span><span>Campaign</span><span>Photography Direction</span><span>AI-Assisted Production</span>
+    </div>
+    <div class="modal-video">
+      <video autoplay muted loop playsinline>
+        <source src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_a817b6b9-7c9f-4940-a259-2346b45221d1_2 4K.mp4">
+      </video>
+    </div>
+    <div class="modal-gallery modal-gallery-3col">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_0b2020b5-51a5-4543-9679-77a35a13cc41_2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_0fed9b3b-0603-4431-b7fe-63dcfc48be2a_3.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_3e64fd4a-c632-40c5-90f2-69c39af15236_1.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_60c4457d-9512-4689-ae04-98ba4d25b20a_3.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_6dc96e2a-e980-481d-81bf-cc2c7d1b8bd5_2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_74bed6ad-f124-4cac-8d8e-757a7f38622a_3.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_9170c411-3263-40f9-b05c-a842752ed2a2_2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_bcca0257-80f5-4221-beb2-4e66b1692db2_2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_feb69769-2c7a-409c-9ced-9f5e4853b0a6_1.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/YOGA CLOTHING 1.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/YOGA CLOTHING 2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/FASHION/YOGA CLOTHING 3.png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 05 LOEWE -->
+<div class="project-modal" id="modal-05">
+  <button class="modal-close" onclick="closeProject('05')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">05 — Luxury Art Direction | Spec Work · 2025</span>
+    <h2 class="modal-headline">Objects in context.</h2>
+    <p class="modal-description">A single-frame art direction study for Loewe — surrealist staging, unexpected props, a woman who makes no effort to explain herself. The image operates in the same visual grammar as the brand's actual campaigns: quiet tension, a confrontation between the mundane and the extraordinary. Craft and absurdity as equals.</p>
+    <div class="modal-disciplines">
+      <span>Art Direction</span><span>Luxury Fashion</span><span>Surrealist Staging</span>
+    </div>
+    <div class="modal-gallery-full">
+      <img src="Para mi portfolio/LOEWE/LOEWE 2.png" alt="" loading="lazy">
+      <div style="height: 4px;"></div>
+      <img src="Para mi portfolio/LOEWE/ChatGPT Image 12 jul 2025, 02_03_50 a.m..png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 06 PLANETA SKIN -->
+<div class="project-modal" id="modal-06">
+  <button class="modal-close" onclick="closeProject('06')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">06 — Beauty / Brand Motion · 2025</span>
+    <h2 class="modal-headline">Skin as a world.</h2>
+    <p class="modal-description">Motion identity and brand direction for Planeta Skin — a beauty concept built on the idea that skincare is a ritual, not a routine. Visual language developed for motion-first brand presence across social and digital platforms.</p>
+    <div class="modal-disciplines">
+      <span>Brand Identity</span><span>Motion Direction</span><span>Beauty</span><span>Visual Strategy</span>
+    </div>
+    <div class="modal-video">
+      <video autoplay muted loop playsinline>
+        <source src="Para mi portfolio/PERFUMES Y SKINCARE/Planeta Skin Draft.mp4">
+      </video>
+    </div>
+  </div>
+</div>
+
+<!-- 07 KRIVE -->
+<div class="project-modal" id="modal-07">
+  <button class="modal-close" onclick="closeProject('07')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">07 — Motion Direction &amp; F&amp;B · 2025</span>
+    <h2 class="modal-headline">Motion with intent.</h2>
+    <p class="modal-description">Brand motion direction for Krive, paired with restaurant campaign imagery. Concept-driven visual identity developed for video-first distribution — designed to move as deliberately as it stands still. The restaurant photography applies the same editorial rigor: every surface, every light source, every hand placement is a decision.</p>
+    <div class="modal-disciplines">
+      <span>Motion Direction</span><span>Brand Identity</span><span>F&amp;B Photography</span><span>Visual Strategy</span>
+    </div>
+    <div class="modal-video">
+      <video autoplay muted loop playsinline>
+        <source src="Para mi portfolio/KRIVE Y RESTAURANTES/krive.mp4">
+      </video>
+    </div>
+    <div class="modal-gallery modal-gallery-2col" style="margin-top: 4px;">
+      <img src="Para mi portfolio/KRIVE Y RESTAURANTES/RESTAURANT 2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/KRIVE Y RESTAURANTES/Nano_Banana_2_Preserve_the_same_female_model_from_the_previous_images___She_is_cooking_quickly_at_th.png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 08 LIES -->
+<div class="project-modal" id="modal-08">
+  <button class="modal-close" onclick="closeProject('08')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">08 — Beauty / Brand Identity | Spec Work · 2025</span>
+    <h2 class="modal-headline">Beauty in<br>contradiction.</h2>
+    <p class="modal-description">Brand identity and campaign concept for LIES — a cosmetics brand built on the tension between truth and performance. Visual language designed to provoke before it seduces.</p>
+    <div class="modal-disciplines">
+      <span>Brand Identity</span><span>Art Direction</span><span>Beauty</span>
+    </div>
+    <div class="modal-video">
+      <video autoplay muted loop playsinline>
+        <source src="Para mi portfolio/PERFUMES Y SKINCARE/PERFUME ANUNCIO.mp4">
+      </video>
+    </div>
+    <div class="modal-gallery-solo">
+      <img src="Para mi portfolio/PERFUMES Y SKINCARE/LIES 1.png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 09 SPORTS CAMPAIGN -->
+<div class="project-modal" id="modal-09">
+  <button class="modal-close" onclick="closeProject('09')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">09 — Sport / Campaign | Spec Work · 2025</span>
+    <h2 class="modal-headline">Built to move.</h2>
+    <p class="modal-description">Conceptual campaign direction for sport — a visual system that treats athletic performance as a design language. Speed, tension, and precision translated into frame-level decisions. Every photograph is a statement about what the body can do when it stops caring about limits.</p>
+    <div class="modal-disciplines">
+      <span>Art Direction</span><span>Sport Campaign</span><span>Visual Strategy</span><span>AI-Assisted Production</span>
+    </div>
+    <div class="modal-gallery modal-gallery-2col">
+      <img src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_premium_sports_campaign_photograph_of__706139f6-e9ba-47cb-aa1c-60ea08f86de0_2.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_sports_action_photograph_capturing_the_ac418319-c594-46c5-bd73-4e2710b5d355_3.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_sports_campaign_photograph_captured_us_51a73f48-948f-4651-aab4-d1f6b809479b_3.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/SPORTS/atlrlz._Hyperrealistic_sports_product_photography_of_a_sleek__fdfec04c-3114-4ab5-97ed-e22f0ccddef6_2.png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- 10 TECH INDUSTRY -->
+<div class="project-modal" id="modal-10">
+  <button class="modal-close" onclick="closeProject('10')">Close ✕</button>
+  <div class="modal-inner">
+    <span class="modal-label">10 — Tech / Product Campaign | Spec Work · 2025</span>
+    <h2 class="modal-headline">Precision, rendered.</h2>
+    <p class="modal-description">Product campaign direction for the tech sector — studio-precision lighting meets high-fashion editorial framing. Objects treated with the same visual authority as luxury goods. Because that is what they deserve.</p>
+    <div class="modal-disciplines">
+      <span>Product Photography Direction</span><span>Campaign</span><span>Visual Strategy</span>
+    </div>
+    <div class="modal-gallery modal-gallery-2col">
+      <img src="Para mi portfolio/TECH INDUSTRY/Nano_Banana_2_Professional_studio_campaign_shot_inspired_by_high_fashion_editorial_lighting_____A_mo.png" alt="" loading="lazy">
+      <img src="Para mi portfolio/TECH INDUSTRY/TECH INDUSTRY 2.png" alt="" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <span class="section-label">— Services</span>
+    <h2 class="section-headline">Six ways in.<br>One standard out.</h2>
+  </div>
+
+  <div class="services-list">
+
+    <div class="service-item">
+      <span class="service-num">01</span>
+      <h3 class="service-name">Capsule</h3>
+      <div class="service-price-block">
+        <span class="service-price">$650</span>
+      </div>
+      <p class="service-desc">One directed creative moment. A single concept, fully art directed — imagery, a short-form film, and one revision round. For brands that want to test a new visual direction, or one product that deserves to be seen the right way.</p>
+      <span class="service-delivery">24 Hours</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">02</span>
+      <h3 class="service-name">Monthly</h3>
+      <div class="service-price-block">
+        <span class="service-price">$1,800</span>
+        <span class="service-per">Per month</span>
+      </div>
+      <p class="service-desc">Your feed, directed by ATLRLZ. A new creative concept each month. Researched, directed, and produced. Delivered as a curated image set, short-form video content, and a suggested deployment calendar. A consistent visual language, month after month.</p>
+      <span class="service-delivery">Monthly</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">03</span>
+      <h3 class="service-name">Identity</h3>
+      <div class="service-price-block">
+        <span class="service-price">$1,800</span>
+      </div>
+      <p class="service-desc">The complete visual system for your brand. Logo, color palette, typography, and a full brand guidelines PDF, applied across five real touchpoints. Not just a logo file. A system you can actually use.</p>
+      <span class="service-delivery">3–4 Days</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">04</span>
+      <h3 class="service-name">Launch</h3>
+      <div class="service-price-block">
+        <span class="service-price">$3,000</span>
+      </div>
+      <p class="service-desc">Everything you need to show up with intention. A complete visual production for a specific brand moment, a product drop, a campaign, a new chapter. Directed campaign imagery, short-form video content, a cinematic anchor piece, and a full launch guide.</p>
+      <span class="service-delivery">4–6 Days</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">05</span>
+      <h3 class="service-name">Ongoing</h3>
+      <div class="service-price-block">
+        <span class="service-price">$2,900</span>
+        <span class="service-per">Per month</span>
+      </div>
+      <p class="service-desc">A creative studio embedded in your brand. Not deliverables — a relationship. Monthly content production, a strategy session, and direct access. For brands serious about building a visual identity that compounds over time.</p>
+      <span class="service-delivery">Monthly</span>
+    </div>
+
+    <div class="service-item s-highlight">
+      <span class="service-num">06</span>
+      <h3 class="service-name">Film</h3>
+      <div class="service-price-block">
+        <span class="service-price">$5,200</span>
+      </div>
+      <p class="service-desc">A cinematic production built to define a brand. A 60–90 second brand film, a campaign image series, voiceover, and cinematic color grade. The one piece that says everything about who you are.</p>
+      <span class="service-delivery">7–10 Days</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label">04 — Contact</span>
+  <img src="logos/logo-white.png" alt="ATLRLZ." class="contact-logo">
+  <h2 class="contact-headline">Let's build something.<br>That matters.</h2>
+  <p class="contact-body">Available for brand campaigns, creative direction,<br>art direction, and long-term partnerships.</p>
+  <a href="mailto:lzatelierhn@gmail.com" class="contact-email">lzatelierhn@gmail.com</a>
+  <a href="https://instagram.com/atlrlz" class="contact-instagram" target="_blank" rel="noopener noreferrer">@atlrlz ↗</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logos/logo-white.png" alt="ATLRLZ." class="footer-logo">
+  <div class="footer-text">
+    ATLRLZ. © 2026 — Creative Direction &amp; Art Direction<br>
+    Tegucigalpa, Honduras — Working globally
+  </div>
+  <div class="footer-right">
+    lzatelierhn@gmail.com
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ——— INITIAL STATE ———
+gsap.set('#nav', { opacity: 0, y: -20 });
+
+// ——— CHARACTER SPLIT UTILITY ———
+function splitToChars(el) {
+  const lines = el.querySelectorAll('.hero-line');
+  lines.forEach(line => {
+    const raw = line.textContent;
+    line.innerHTML = '';
+    raw.split('').forEach(ch => {
+      const s = document.createElement('span');
+      s.className = 'char';
+      s.style.display = 'inline-block';
+      s.textContent = ch === ' ' ? ' ' : ch;
+      line.appendChild(s);
+    });
+  });
+  return el.querySelectorAll('.char');
+}
+
+// ——— LOADER SEQUENCE ———
+const loader = document.getElementById('loader');
+const loaderLogo = document.getElementById('loader-logo');
+
+const loaderTl = gsap.timeline({
+  onComplete: () => {
+    loader.style.display = 'none';
+    startHeroAnimation();
+  }
+});
+
+loaderTl
+  .to(loaderLogo, { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' })
+  .to(loaderLogo, { opacity: 0, y: -16, duration: 0.5, ease: 'power2.in', delay: 0.6 })
+  .to(loader, { opacity: 0, duration: 0.35, ease: 'power2.inOut' }, '-=0.1');
+
+function startHeroAnimation() {
+  const chars = splitToChars(document.getElementById('hero-headline'));
+  const heroTl = gsap.timeline();
+
+  heroTl
+    .to('#nav', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
+    .from(chars, { opacity: 0, y: 44, stagger: 0.025, duration: 0.6, ease: 'power2.out' }, '-=0.2')
+    .from('#hero-subhead', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.25')
+    .from('#hero-body', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.35')
+    .from('#hero-cta', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.35');
+}
+
+// ——— NAV SCROLL BEHAVIOR ———
+const nav = document.getElementById('nav');
+const navLogoImg = document.getElementById('nav-logo-img');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+// Logo swap over About (white bg)
+ScrollTrigger.create({
+  trigger: '#about',
+  start: 'top 80px',
+  end: 'bottom 80px',
+  onEnter: () => { nav.classList.add('light-nav'); navLogoImg.src = 'logos/logo-blue.png'; },
+  onLeave: () => { nav.classList.remove('light-nav'); navLogoImg.src = 'logos/logo-white.png'; },
+  onEnterBack: () => { nav.classList.add('light-nav'); navLogoImg.src = 'logos/logo-blue.png'; },
+  onLeaveBack: () => { nav.classList.remove('light-nav'); navLogoImg.src = 'logos/logo-white.png'; }
+});
+
+// Active nav links
+['work', 'about', 'contact'].forEach(id => {
+  ScrollTrigger.create({
+    trigger: '#' + id,
+    start: 'top center',
+    end: 'bottom center',
+    onToggle: self => {
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      if (self.isActive) {
+        const a = document.querySelector('.nav-links a[href="#' + id + '"]');
+        if (a) a.classList.add('active');
+      }
+    }
+  });
+});
+
+// ——— MOBILE MENU ———
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+
+hamburger.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open', menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+  const spans = hamburger.querySelectorAll('span');
+  if (menuOpen) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    menuOpen = false;
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+    hamburger.querySelectorAll('span').forEach((s, i) => {
+      s.style.transform = '';
+      s.style.opacity = '';
+    });
+  });
+});
+
+// ——— HERO PARALLAX ———
+gsap.to('.hero-bg', {
+  y: '28%',
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '#hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true
+  }
+});
+
+// ——— SCROLL REVEALS ———
+function reveal(selector, delay) {
+  document.querySelectorAll(selector).forEach(el => {
+    gsap.from(el, {
+      y: 60, opacity: 0, duration: 0.9, ease: 'power3.out', delay: delay || 0,
+      scrollTrigger: { trigger: el, start: 'top 87%', toggleActions: 'play none none none' }
+    });
+  });
+}
+
+reveal('#about .section-label');
+reveal('#about .section-headline');
+reveal('.about-body p');
+reveal('#disciplines .section-label');
+reveal('#disciplines .section-headline');
+reveal('#motion .section-label');
+reveal('#motion .section-headline');
+reveal('#services .section-label');
+reveal('#services .section-headline');
+reveal('#work .section-label');
+reveal('#work .section-headline');
+reveal('#contact .section-label');
+reveal('.contact-logo');
+reveal('.contact-headline');
+reveal('.contact-body');
+reveal('.contact-email');
+reveal('.contact-instagram');
+
+// Services rows stagger
+gsap.from('.service-item', {
+  y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+  scrollTrigger: { trigger: '.services-list', start: 'top 85%', toggleActions: 'play none none none' }
+});
+
+// Chips stagger
+gsap.from('.chip', {
+  y: 32, opacity: 0, duration: 0.65, stagger: 0.07, ease: 'power3.out',
+  scrollTrigger: { trigger: '.disciplines-chips', start: 'top 87%', toggleActions: 'play none none none' }
+});
+
+// Work grid rows — stagger cards per row
+document.querySelectorAll('.work-row').forEach(row => {
+  const cards = row.querySelectorAll('.project-card');
+  gsap.from(cards, {
+    y: 60, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out',
+    scrollTrigger: { trigger: row, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+// Footer
+gsap.from('footer > *', {
+  opacity: 0, y: 20, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+  scrollTrigger: { trigger: 'footer', start: 'top 92%', toggleActions: 'play none none none' }
+});
+
+// ——— PROJECT MODALS ———
+function openProject(id) {
+  const modal = document.getElementById('modal-' + id);
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modal.scrollTop = 0;
+  gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: 'power2.out' });
+}
+
+function closeProject(id) {
+  const modal = document.getElementById('modal-' + id);
+  gsap.to(modal, {
+    opacity: 0, duration: 0.25, ease: 'power2.in',
+    onComplete: () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      modal.scrollTop = 0;
+    }
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.project-modal.open').forEach(m => {
+      closeProject(m.id.replace('modal-', ''));
+    });
+    if (menuOpen) {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  }
+});
+</script>
+</body>
+</html>
