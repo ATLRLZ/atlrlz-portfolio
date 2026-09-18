@@ -113,9 +113,10 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
   overflow: hidden;
 }
 .hero-bg {
-  position: absolute; inset: 0;
-  background: url('Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_a817b6b9-7c9f-4940-a259-2346b45221d1_2.png') center/cover no-repeat;
-  will-change: transform;
+  position: absolute; inset: 0; will-change: transform;
+}
+.hero-bg video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -421,6 +422,24 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
 }
 .form-submit:hover { background: rgba(255,255,255,0.06); border-color: var(--white); }
 
+/* ——— REEL / FEATURED ——— */
+#reel {
+  position: relative; height: 80vh; min-height: 480px;
+  overflow: hidden; background: #111;
+}
+#reel video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+#reel::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(10,10,10,0.25);
+}
+.reel-label {
+  position: absolute; bottom: 40px; left: 48px; z-index: 2;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  opacity: 0.5; color: var(--white);
+}
+
 /* ——— FOOTER ——— */
 footer {
   display: flex; align-items: center; justify-content: space-between;
@@ -523,7 +542,11 @@ footer {
 
 <!-- ——— HERO ——— -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline preload="auto" poster="Para mi portfolio/FASHION/atlrlz._A_hyperrealistic_high_fashion_editorial_photograph_ve_bcca0257-80f5-4221-beb2-4e66b1692db2_2.png">
+      <source src="Para mi portfolio/MOTION/LOEWEFW26.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-content">
     <p id="hero-subhead">Creative Direction Studio</p>
     <h1 id="hero-headline">
@@ -552,6 +575,14 @@ footer {
       <span class="about-meta-item">Art Direction</span>
     </div>
   </div>
+</section>
+
+<!-- ——— REEL ——— -->
+<section id="reel">
+  <video autoplay muted loop playsinline preload="none" data-src="Para mi portfolio/MOTION/BOTTEGA 2.mp4">
+    <source src="Para mi portfolio/MOTION/BOTTEGA 2.mp4" type="video/mp4">
+  </video>
+  <span class="reel-label">Bottega Veneta — Spec Film · 2026</span>
 </section>
 
 <!-- ——— DISCIPLINES ——— -->
@@ -588,7 +619,7 @@ footer {
     <div class="work-row work-row-full">
       <div class="project-card" onclick="openProject('01')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/MOTION/LOEWEFW26.mp4">
           </video>
           <div class="project-card-overlay">
@@ -605,7 +636,7 @@ footer {
     <div class="work-row work-row-60-40">
       <div class="project-card" onclick="openProject('02')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/MOTION/BOTTEGA 2.mp4">
           </video>
           <div class="project-card-overlay">
@@ -618,7 +649,7 @@ footer {
       </div>
       <div class="project-card" onclick="openProject('03')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/MOTION/iPhone18proFINAL.mp4">
           </video>
           <div class="project-card-overlay">
@@ -635,7 +666,7 @@ footer {
     <div class="work-row work-row-full">
       <div class="project-card" onclick="openProject('04')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/MOTION/coca cola1.mp4">
           </video>
           <div class="project-card-overlay">
@@ -682,7 +713,7 @@ footer {
     <div class="work-row work-row-40-60">
       <div class="project-card" onclick="openProject('07')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/MOTION/allez-les-bleus.mp4">
           </video>
           <div class="project-card-overlay">
@@ -695,7 +726,7 @@ footer {
       </div>
       <div class="project-card" onclick="openProject('08')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/KRIVE Y RESTAURANTES/krive.mp4">
           </video>
           <div class="project-card-overlay">
@@ -711,7 +742,7 @@ footer {
     <div class="work-row work-row-full">
       <div class="project-card" onclick="openProject('09')">
         <div class="project-card-inner">
-          <video class="project-card-media" autoplay muted loop playsinline>
+          <video class="project-card-media" muted loop playsinline preload="none">
             <source src="Para mi portfolio/PERFUMES Y SKINCARE/Planeta Skin Draft.mp4">
           </video>
           <div class="project-card-overlay">
@@ -1140,6 +1171,7 @@ function reveal(selector) {
   });
 }
 
+reveal('.reel-label');
 reveal('.about-left .section-label');
 reveal('.about-left .section-headline');
 reveal('.about-body p');
@@ -1179,22 +1211,81 @@ gsap.from('footer > *', {
   scrollTrigger: { trigger: 'footer', start: 'top 92%', toggleActions: 'play none none none' }
 });
 
-// ——— PROJECT MODALS ———
+// ——— VIDEO LAZY LOAD (IntersectionObserver) ———
+// Card videos: load + play only when visible, pause when out of view
+const cardVideoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      if (video.readyState === 0) {
+        video.load();
+      }
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.project-card-media').forEach(el => {
+  if (el.tagName === 'VIDEO') cardVideoObserver.observe(el);
+});
+
+// Reel section video — lazy load on scroll
+const reelVideoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      if (video.readyState === 0) video.load();
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: 0.1 });
+
+const reelVideo = document.querySelector('#reel video');
+if (reelVideo) reelVideoObserver.observe(reelVideo);
+
+// ——— PROJECT MODALS (with History API for back button) ———
+let _modalClosing = false;
+
 function openProject(id) {
   const modal = document.getElementById('modal-' + id);
+  if (!modal) return;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   modal.scrollTop = 0;
+  history.pushState({ atlrlzModal: id }, '', '#project-' + id);
   gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' });
 }
 
-function closeProject(id) {
+function _closeModalUI(id) {
   const modal = document.getElementById('modal-' + id);
+  if (!modal || !modal.classList.contains('open')) return;
   gsap.to(modal, {
     opacity: 0, duration: 0.22, ease: 'power2.in',
-    onComplete: () => { modal.classList.remove('open'); document.body.style.overflow = ''; modal.scrollTop = 0; }
+    onComplete: () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      modal.scrollTop = 0;
+    }
   });
 }
+
+function closeProject(id) {
+  if (history.state && history.state.atlrlzModal === id) {
+    history.back(); // popstate will call _closeModalUI
+  } else {
+    _closeModalUI(id);
+  }
+}
+
+window.addEventListener('popstate', () => {
+  document.querySelectorAll('.project-modal.open').forEach(m => {
+    _closeModalUI(m.id.replace('modal-', ''));
+  });
+});
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -1218,7 +1309,6 @@ function handleFormSubmit(e) {
   const brand   = document.getElementById('f-brand').value;
   const url     = document.getElementById('f-url').value;
   const project = document.getElementById('f-project').value;
-
   const body = encodeURIComponent(
     `Name: ${name}\nEmail: ${email}\nBrand: ${brand}\nWebsite/IG: ${url}\n\nProject:\n${project}`
   );
